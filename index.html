@@ -1,302 +1,852 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Roteiro de Atendimento Docce — 2025</title>
-  <meta name="description" content="Roteiro de atendimento Docce 2025 – manual digital para equipe, com passos 1 a 8, políticas e template WhatsApp." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gestão de Entregas — Docce</title>
+  <meta name="theme-color" content="#0b0b0b" />
+
   <style>
     :root{
-      --bg:#0f0f10;
-      --card:#141416;
-      --muted:#b6bbc6;
-      --text:#f5f7fb;
-      --accent1:#ff7a2f; /* laranja */
-      --accent2:#2fd28f; /* verde */
-      --border:#26272b;
-      --code:#0b0c0d;
+      --bg:#0b0b0b;
+      --card:#141414;
+      --card2:#101010;
+      --text:#f2f2f2;
+      --muted:#b7b7b7;
+      --line:#262626;
+      --good:#42d17d;
+      --warn:#ffcc66;
+      --bad:#ff6b6b;
+      --accent:#ffffff;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";}
-    a{color:var(--accent2);text-decoration:none}
-    a:hover{text-decoration:underline}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(900px 500px at 10% 0%, rgba(255,255,255,.06), transparent 60%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(255,255,255,.05), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", "Apple Color Emoji","Segoe UI Emoji";
+      letter-spacing:.2px;
+    }
+    a{color:inherit}
+    .wrap{max-width:1160px;margin:0 auto;padding:18px 14px 40px}
     header{
-      padding:48px 20px 24px;
-      background:linear-gradient(135deg,var(--accent1),var(--accent2));
-      color:#111;
-      position:relative;
+      display:flex;gap:12px;align-items:center;justify-content:space-between;
+      padding:12px 4px 18px;
+    }
+    .brand{
+      display:flex;flex-direction:column;gap:2px;
+    }
+    .brand h1{margin:0;font-size:18px;font-weight:750}
+    .brand p{margin:0;color:var(--muted);font-size:12px}
+    .top-actions{
+      display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    }
+    .pill{
+      display:flex;align-items:center;gap:8px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      padding:8px 10px;border-radius:999px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:14px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       overflow:hidden;
     }
-    header .wrap{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:20px}
-    .logo{
-      width:64px;height:64px;border-radius:16px;background:#fff3;display:grid;place-items:center;
-      border:2px solid rgba(255,255,255,.35);backdrop-filter: blur(3px);
-      font-weight:800;font-size:22px;color:#111;background:#fff;
+    .card .hd{
+      padding:14px 14px 10px;
+      display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.12);
     }
-    .title h1{margin:0 0 6px;font-size:28px}
-    .title p{margin:0;color:#111;opacity:.9}
-    nav{
-      background:#0e0f11; border-top:1px solid #000; border-bottom:1px solid #000;
-      position:sticky;top:0;z-index:10;
+    .card .hd h2{margin:0;font-size:14px;font-weight:780}
+    .card .hd .sub{margin-top:3px;color:var(--muted);font-size:12px}
+    .card .bd{padding:14px}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .row > *{flex:1}
+    label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}
+    input, select, textarea{
+      width:100%;
+      background: rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--text);
+      padding:10px 11px;border-radius:14px;
+      outline:none;
     }
-    nav .wrap{max-width:1000px;margin:0 auto;display:flex;gap:12px;overflow:auto;padding:10px 12px}
-    nav a{padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:#131417;color:#cbd2df;white-space:nowrap}
-    nav a:hover{border-color:var(--accent2);color:#e9fdf3}
-    main{max-width:1000px;margin:0 auto;padding:28px 20px 80px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin:18px 0;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-    h2{font-size:22px;margin:20px 0 8px}
-    h3{font-size:18px;margin:16px 0 6px;color:#dfe3ea}
-    blockquote{margin:12px 0;padding:10px 14px;border-left:3px solid var(--accent2);background:#0f1114;border-radius:8px;color:#d9dee8}
-    ul{margin:10px 0 0 18px}
-    .whats{background:#0b2b1f;border:1px solid #134333}
-    .code{background:var(--code);border:1px dashed #2a2d35;border-radius:12px;padding:14px;white-space:pre-wrap;font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;color:#e7ffef}
-    .toolbar{display:flex;justify-content:flex-end;margin-bottom:10px;gap:8px}
-    .btn{cursor:pointer;border:1px solid var(--border);background:#14161a;color:#e6ebf3;border-radius:10px;padding:6px 10px;font-size:13px}
-    .btn:hover{border-color:var(--accent2)}
-    .pill{display:inline-flex;padding:2px 8px;border-radius:999px;border:1px solid var(--border);background:#131417;color:#cbd2df;font-size:12px;margin-left:8px}
-    footer{padding:30px 20px;color:#9aa3b2;border-top:1px solid var(--border);background:#0e0f11}
-    .hint{font-size:13px;color:#aeb6c5}
-    .list-emoji li{margin:6px 0}
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(255,255,255,.25);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.06);
+    }
+    textarea{min-height:74px;resize:vertical}
+    .btn{
+      cursor:pointer;
+      border:none;
+      border-radius:14px;
+      padding:10px 12px;
+      background: rgba(255,255,255,.14);
+      color: var(--text);
+      font-weight:700;
+      transition:.15s transform ease, .15s opacity ease, .15s background ease;
+      display:inline-flex;align-items:center;gap:8px;justify-content:center;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.18)}
+    .btn:active{transform: translateY(0px); opacity:.9}
+    .btn.primary{background: rgba(255,255,255,.95); color:#0b0b0b}
+    .btn.primary:hover{background: rgba(255,255,255,.90)}
+    .btn.ghost{background: transparent;border:1px solid rgba(255,255,255,.14)}
+    .btn.danger{background: rgba(255,107,107,.18); border:1px solid rgba(255,107,107,.28)}
+    .btn.good{background: rgba(66,209,125,.18); border:1px solid rgba(66,209,125,.28)}
+    .btn.small{padding:8px 10px;border-radius:12px;font-size:12px}
+    .sep{height:1px;background:rgba(255,255,255,.10);margin:12px 0}
+    .muted{color:var(--muted)}
+    .mini{font-size:12px}
+    .kpi{
+      display:grid;grid-template-columns:1fr 1fr;gap:10px
+    }
+    .kpi .box{
+      padding:12px;border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.24);
+    }
+    .kpi .box .t{font-size:12px;color:var(--muted)}
+    .kpi .box .v{margin-top:6px;font-size:18px;font-weight:820}
+    .list{
+      display:flex;flex-direction:column;gap:10px;
+    }
+    .item{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      border-radius:16px;
+      overflow:hidden;
+    }
+    .item .top{
+      padding:12px 12px;
+      display:flex;gap:10px;align-items:center;justify-content:space-between;
+      cursor:pointer;
+    }
+    .item .top:hover{background: rgba(255,255,255,.04)}
+    .item .left{display:flex;flex-direction:column;gap:4px}
+    .item .title{font-weight:780}
+    .item .meta{color:var(--muted);font-size:12px}
+    .item .right{display:flex;gap:8px;align-items:center}
+    .tag{
+      font-size:11px;color:var(--muted);
+      border:1px solid rgba(255,255,255,.14);
+      padding:6px 8px;border-radius:999px;
+      background: rgba(255,255,255,.05);
+      white-space:nowrap;
+    }
+    .item .details{
+      padding:0 12px 12px;
+      display:none;
+    }
+    .item.open .details{display:block}
+    .details-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:10px
+    }
+    @media (max-width: 540px){
+      .details-grid{grid-template-columns:1fr}
+    }
+    .details .field{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      padding:10px;border-radius:14px;
+    }
+    .details .field .k{font-size:12px;color:var(--muted)}
+    .details .field .v{margin-top:6px;font-weight:750}
+    .footer-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .hint{font-size:12px;color:var(--muted);line-height:1.35}
+    .warnbox{
+      border:1px dashed rgba(255,255,255,.18);
+      padding:10px;border-radius:14px;background: rgba(0,0,0,.18);
+      color:var(--muted);font-size:12px
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <div class="logo">D</div>
-      <div class="title">
-        <h1>Roteiro de Atendimento Docce — 2025</h1>
-        <p>Manual digital para atendimento consultivo, políticas e template WhatsApp.</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>Gestão de Entregas</h1>
+        <p>Index único • sem aquele bloco extra de “Fechamento do dia / total por entregador” fora do lugar.</p>
       </div>
-    </div>
-  </header>
 
-  <nav>
-    <div class="wrap">
-      <a href="#sec1">1. Início</a>
-      <a href="#sec2">2. Necessidade</a>
-      <a href="#sec3">3. Linhas Docce</a>
-      <a href="#sec4">4. Aprofundamento</a>
-      <a href="#sec4A">4A. Bolos</a>
-      <a href="#sec4B">4B. Bento Cakes</a>
-      <a href="#sec4C">4C. Docinhos</a>
-      <a href="#sec4D">4D. Sobremesas</a>
-      <a href="#sec4E">4E. Taças/Boxes</a>
-      <a href="#sec5A">5A. Pagamento</a>
-      <a href="#sec5B">5B. Cancelamento</a>
-      <a href="#sec6">6. Confirmação</a>
-      <a href="#sec7">7. Encerramento</a>
-      <a href="#sec8">8. WhatsApp</a>
-    </div>
-  </nav>
-
-  <main>
-    <section id="sec1" class="card">
-      <h2>🟢 1. Início da conversa – Apresentação e acolhimento</h2>
-      <blockquote>“Olá! Tudo bem? Com quem eu falo, por gentileza?”<br>*(aguardar o nome)*</blockquote>
-      <blockquote>“Prazer, [Nome do cliente]! Aqui é o Oscar da Docce 🍰. Tudo certinho?<br>Eu vou te fazer algumas perguntinhas rápidas só pra entender direitinho o que você precisa e te ajudar a escolher a melhor opção, tudo bem?”</blockquote>
-    </section>
-
-    <section id="sec2" class="card">
-      <h2>🟡 2. Identificação da necessidade</h2>
-      <blockquote>“O seu pedido é pra qual ocasião, [Nome do cliente]? É pra um aniversário, um evento, uma comemoração em casa…?”</blockquote>
-      <blockquote>“Ah, entendi! Então é pra [repetir tipo de evento].<br>Esse tipo de comemoração costuma pedir algo mais [intimista / prático / elegante / chamativo — adaptar conforme o caso].”</blockquote>
-    </section>
-
-    <section id="sec3" class="card">
-      <h2>🟠 3. Direcionamento inicial – Apresentação das linhas Docce</h2>
-      <ul class="list-emoji">
-        <li>🧁 <strong>Bolos</strong> — no acetato ou decorados</li>
-        <li>🍰 <strong>Bento Cakes</strong> — bolinhos individuais de 200g</li>
-        <li>🍬 <strong>Docinhos</strong> — tradicionais e finos</li>
-        <li>🍮 <strong>Sobremesas</strong> — tortas e cheesecakes</li>
-        <li>🍨 <strong>Taças e Boxes</strong> — ideais para dividir</li>
-      </ul>
-      <blockquote>“Se você já souber qual categoria deseja, posso te enviar agora mesmo o <em>cardápio completo</em> pra escolher o sabor.<br>Caso prefira, posso te ajudar a definir o tamanho e o tipo de produto ideal pra sua comemoração — o que você prefere?”</blockquote>
-    </section>
-
-    <section id="sec4" class="card">
-      <h2>🟣 4. Aprofundamento – Rendimento e Direcionamento de Escolha</h2>
-      <blockquote>“Perfeito, [Nome do cliente]! Pra eu te ajudar direitinho, me conta:<br>quantas pessoas vocês pretendem servir?”</blockquote>
-      <blockquote>“Ótimo! Com essa quantidade, eu já consigo te orientar sobre o tamanho ideal.”</blockquote>
-    </section>
-
-    <section id="sec4A" class="card">
-      <h3>🎂 4A. Bolos</h3>
-      <p>Os <strong>bolos da Docce</strong> são feitos com <strong>massa branca</strong>, <strong>massa de chocolate</strong> e <strong>massa pão de ló</strong> — usadas conforme o sabor escolhido (ex.: morango com nata, castanhas). A exceção é o <strong>Red Velvet</strong>, com <em>massa exclusiva aveludada</em> com toque de cacau.</p>
-      <p>Formatos:</p>
-      <ul>
-        <li><strong>Bolos no acetato</strong> – práticos e podem ficar fora da geladeira por um tempo maior;</li>
-        <li><strong>Bolos decorados</strong> – ideais para festas e comemorações maiores.</li>
-      </ul>
-      <p>Tamanhos e rendimentos:</p>
-      <ul>
-        <li>🍰 <strong>Mini Bolo</strong> – ~1 kg (até 6 fatias)</li>
-        <li>🍰 <strong>Bolo P</strong> – ~1,8 kg (12 a 15 fatias)</li>
-        <li>🍰 <strong>Bolo M</strong> – ~2,5 a 2,6 kg (20 a 22 fatias)</li>
-        <li>🍰 <strong>Bolo G</strong> – ~3,5 a 3,6 kg (28 a 30 fatias)</li>
-      </ul>
-      <ul>
-        <li><strong>Entrega:</strong> permitida para <em>bolos no acetato</em> nos tamanhos <strong>Mini, P e M</strong>.</li>
-        <li><strong>Somente retirada:</strong> <em>Bolo G</em> e <em>bolos decorados</em>.</li>
-      </ul>
-      <blockquote>“Depois que você escolher o tamanho e o tipo de bolo, eu te envio o cardápio completo com os sabores disponíveis pra definir o preferido, tudo bem?”</blockquote>
-    </section>
-
-    <section id="sec4B" class="card">
-      <h3>🍰 4B. Bento Cakes</h3>
-      <p>Os <strong>Bento Cakes</strong> são bolinhos individuais de ~<strong>200g</strong>, ótimos para presentear ou celebrar algo pequeno.</p>
-      <ul>
-        <li><strong>Preço:</strong> R$ 45,00 (unidade).</li>
-        <li><strong>Cores padrão da decoração:</strong> preto e vermelho. <span class="pill">+ R$ 10,00 por unidade</span> para incluir outras cores.</li>
-        <li><strong>Sabores:</strong>
-          <ul>
-            <li>🍫 <strong>Brigadeirudo</strong> – massa de <em>chocolate</em> com recheio de brigadeiro;</li>
-            <li>🍯 <strong>Casadinho</strong> – massa de <em>pão de ló</em> com doce de leite artesanal;</li>
-            <li>❤️ <strong>Red Velvet</strong> – <em>massa exclusiva red velvet</em> com cream cheese frosting e geleia de frutas vermelhas.</li>
-          </ul>
-        </li>
-        <li><strong>Embalagem:</strong> tipo <em>hamburgueira</em>.</li>
-        <li><strong>Entrega:</strong> <em>permitida</em>.</li>
-      </ul>
-    </section>
-
-    <section id="sec4C" class="card">
-      <h3>🍬 4C. Docinhos</h3>
-      <ul>
-        <li><strong>Valores:</strong> por cento (100 unidades). Pedido mínimo: <strong>50 unidades por sabor</strong>.</li>
-        <li><strong>Peso:</strong> brigadeiros com 15g cada.</li>
-        <li><strong>Formatos especiais:</strong> coração ou flor <span class="pill">+ R$ 0,70 / un.</span></li>
-        <li><strong>Embalagem:</strong> branca tradicional (cores/formatos especiais: cliente fornece).</li>
-        <li><strong>Prazo:</strong> encomendas com <strong>48h</strong> de antecedência.</li>
-        <li><strong>Entrega:</strong> <em>não disponível</em>. <strong>Somente retirada.</strong></li>
-      </ul>
-    </section>
-
-    <section id="sec4D" class="card">
-      <h3>🍮 4D. Sobremesas (Tortas e Cheesecakes)</h3>
-      <ul>
-        <li><strong>Tamanhos:</strong> P (6 fatias), M (8–10), G (12–14).</li>
-        <li><strong>Exemplos:</strong> Cheesecake Basco, Cheesecake Tradicional, Banoffee, Morangoffe, Torta de Limão, Torta de Nozes, Torta 3 Chocolates.</li>
-        <li><strong>Prazo:</strong> até <strong>24h</strong> (algumas permitem 2h, verificar disponibilidade).</li>
-        <li><strong>Entrega:</strong> <em>não disponível</em>. <strong>Somente retirada.</strong></li>
-      </ul>
-    </section>
-
-    <section id="sec4E" class="card">
-      <h3>🍨 4E. Taças e Boxes Doces</h3>
-      <ul>
-        <li><strong>Rendimentos:</strong> Taça 1,2L (6–8 pessoas) • Box 1,5L (8–10 pessoas).</li>
-        <li><strong>Exemplos:</strong> Box Red Velvet, Gargamel, Morango, Ninho c/ Nutella, Tiramissu, Brûlée Charlotte.</li>
-        <li><strong>Prazo:</strong> até <strong>24h</strong>.</li>
-        <li><strong>Entrega:</strong> <em>permitida</em> (delivery disponível).</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h3>🧾 Observações internas</h3>
-      <ul>
-        <li>🚚 <strong>Itens com delivery:</strong> Bento Cakes; <em>bolos no acetato</em> nos tamanhos <strong>Mini, P e M</strong>; <strong>Taças e Boxes</strong>.</li>
-        <li>🏪 <strong>Somente retirada:</strong> Bolo G; bolos decorados; docinhos; sobremesas (tortas/cheesecakes).</li>
-        <li>📦 Prazos mínimos: Bolos 24h • Docinhos 48h • Sobremesas/Taças 2h a 24h (conforme disponibilidade).</li>
-        <li>🎀 Coberturas especiais (rosas de brigadeiro, buttercream, flores naturais etc.): <strong>acréscimo</strong>.</li>
-        <li>🚫 Não trabalhamos com <strong>pasta americana</strong>.</li>
-      </ul>
-    </section>
-
-    <section id="sec5A" class="card">
-      <h2>💰 5A. Formas de Pagamento</h2>
-      <blockquote>“Perfeito, [Nome do cliente]! Agora me confirma, por gentileza, a forma de pagamento que você prefere.”</blockquote>
-      <ul>
-        <li>💸 <strong>Dinheiro</strong></li>
-        <li>💳 <strong>Cartão</strong> (crédito ou débito) — delivery com máquina válido para <strong>Bento Cakes</strong>, <strong>bolos no acetato</strong> <em>Mini/P/M</em> e <strong>Taças/Boxes</strong>.</li>
-        <li>🔑 <strong>PIX</strong></li>
-      </ul>
-      <p><strong>Adiantamento obrigatório:</strong> <span class="pill">50% do valor total</span> para iniciar a produção (todos os produtos).<br>
-      <strong>Link de pagamento:</strong> disponível apenas para pedidos <strong>acima de R$ 200,00</strong>.</p>
-      <blockquote>“E só lembrando, [Nome do cliente]: para confirmarmos a encomenda e iniciarmos a produção, é necessário um <em>adiantamento de 50% do valor total</em>. Esse procedimento garante a reserva do seu pedido na nossa programação.”</blockquote>
-    </section>
-
-    <section id="sec5B" class="card">
-      <h2>📄 5B. Política de Cancelamento e Crédito</h2>
-      <ul>
-        <li><strong>Não reembolsável:</strong> o adiantamento de 50% <em>não é devolvido</em> em caso de cancelamento.</li>
-        <li><strong>Crédito válido por 1 ano:</strong> o valor adiantado fica disponível como <em>crédito</em> para um <strong>novo pedido</strong> por até <strong>1 ano</strong> a partir da data do pagamento.</li>
-        <li><strong>Sem trava de preço:</strong> o adiantamento <em>não assegura</em> os valores de bolos/sobremesas. Em caso de reajustes, aplica-se a <strong>tabela vigente</strong> na data do novo pedido; o crédito é integralmente abatido e eventuais diferenças devem ser pagas.</li>
-      </ul>
-      <blockquote>“Fica combinado assim, [Nome do cliente]: caso precise cancelar, o valor adiantado vira um crédito válido por até 1 ano para um novo pedido. Lembrando que os preços seguem a tabela vigente no momento do novo agendamento.”</blockquote>
-    </section>
-
-    <section id="sec6" class="card">
-      <h2>🟣 6. Confirmação e fechamento</h2>
-      <blockquote>“Perfeito, [Nome do cliente]! Assim que eu registrar o pagamento, eu te envio a <em>confirmação de encomenda</em> com todos os detalhes, tudo bem?”</blockquote>
-    </section>
-
-    <section id="sec7" class="card">
-      <h2>⚪ 7. Encerramento acolhedor</h2>
-      <blockquote>“Foi um prazer te atender, [Nome do cliente]! 💛<br>Qualquer dúvida é só me chamar por aqui.<br>A Docce agradece a preferência e já deseja uma comemoração deliciosa!”</blockquote>
-    </section>
-
-    <section id="sec8" class="card whats">
-      <div class="toolbar">
-        <button class="btn" onclick="copyConfirm()">Copiar modelo</button>
+      <div class="top-actions">
+        <div class="pill">
+          <span>Data:</span>
+          <input id="filterDate" type="date" style="padding:6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.35);color:var(--text);" />
+        </div>
+        <button id="btnExport" class="btn ghost small" type="button">Exportar CSV</button>
+        <button id="btnReset" class="btn danger small" type="button">Limpar tudo</button>
       </div>
-      <h2>🟠 8. Modelo de Confirmação de Encomenda (WhatsApp)</h2>
-      <pre id="wa" class="code">
-*🧾 CONFIRMAÇÃO DE ENCOMENDAS*
+    </header>
 
-*Cliente:* ANNA ANDRADE SITYÁ
-*Telefone:* (69) 98119-7641
+    <div class="grid">
+      <!-- COLUNA ESQUERDA -->
+      <section class="card">
+        <div class="hd">
+          <div>
+            <h2>Nova entrega / encomenda</h2>
+            <div class="sub">Cadastre e acompanhe as entregas do dia. Lista colapsável (clique no item para abrir).</div>
+          </div>
+        </div>
 
-*Endereço de entrega:*
-&gt; RETIRADA
+        <div class="bd">
+          <div class="row">
+            <div>
+              <label>Cliente</label>
+              <input id="oCustomer" placeholder="Nome do cliente" autocomplete="off" />
+            </div>
+            <div>
+              <label>Tipo</label>
+              <select id="oType">
+                <option value="entrega">Entrega</option>
+                <option value="retirada">Retirada</option>
+              </select>
+            </div>
+          </div>
 
-*Entrega:*
-&gt; 27/09 - *Sábado* | *18:30*
+          <div class="row" style="margin-top:10px">
+            <div>
+              <label>Data</label>
+              <input id="oDate" type="date" />
+            </div>
+            <div>
+              <label>Hora</label>
+              <input id="oTime" type="time" />
+            </div>
+          </div>
 
-➡️ *É bolo?* SIM / NÃO | ACETATO / DECORADO
-📏 *Tamanho:* MINI / P / M / G
+          <div class="row" style="margin-top:10px">
+            <div>
+              <label>Valor do pedido</label>
+              <input id="oValue" inputmode="decimal" placeholder="Ex: 20 / 20,00 / 20.00" />
+            </div>
+            <div>
+              <label>Taxa de entrega</label>
+              <input id="oFee" inputmode="decimal" placeholder="Ex: 5 / 5,00 / 5.00" />
+            </div>
+          </div>
 
-*Pedido:*
-1️⃣ Bolo *Gargamel "P"* - R$ 215,00
+          <div class="row" style="margin-top:10px">
+            <div>
+              <label>Entregador (código)</label>
+              <select id="oCourier"></select>
+            </div>
+            <div>
+              <label>Observações</label>
+              <input id="oNote" placeholder="Opcional" />
+            </div>
+          </div>
 
-==========================
-*Total:* R$ 215,00
-*Pgto:* PIX efetuado
-==========================
+          <div class="footer-actions" style="margin-top:12px">
+            <button id="btnAddOrder" class="btn primary" type="button">Adicionar</button>
+            <button id="btnClearForm" class="btn" type="button">Limpar campos</button>
+          </div>
 
-Estamos preparando o seu pedido.
-Agradecemos 💛 a sua preferência!
-*Equipe Docce 🍰*
-      </pre>
-      <p class="hint">Dica: edite os campos e clique em “Copiar modelo” para colar direto no WhatsApp.</p>
-    </section>
-  </main>
+          <div class="sep"></div>
 
-  <footer>
-    <p>Docce • Roteiro 2025 • Manual digital de atendimento</p>
-  </footer>
+          <div class="kpi">
+            <div class="box">
+              <div class="t">Total em pedidos (dia)</div>
+              <div id="kpiOrders" class="v">R$ 0,00</div>
+            </div>
+            <div class="box">
+              <div class="t">Total em taxas (dia)</div>
+              <div id="kpiFees" class="v">R$ 0,00</div>
+            </div>
+          </div>
 
+          <div class="sep"></div>
+
+          <div class="list" id="ordersList"></div>
+
+          <div class="warnbox" style="margin-top:12px">
+            <div><b>Dica:</b> se o GitHub estiver dando erro ao salvar, cole as 3 partes por etapas e clique em <span class="mono">Commit changes</span> a cada etapa.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUNA DIREITA -->
+      <aside class="card">
+        <div class="hd">
+          <div>
+            <h2>Entregadores</h2>
+            <div class="sub">Cadastro local (LocalStorage). Código sugerido: 4 dígitos.</div>
+          </div>
+        </div>
+
+        <div class="bd">
+          <div class="row">
+            <div>
+              <label>Código</label>
+              <input id="cCode" maxlength="4" placeholder="0001" inputmode="numeric" />
+            </div>
+            <div>
+              <label>Nome</label>
+              <input id="cName" placeholder="Nome do entregador" />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px">
+            <div>
+              <label>Telefone</label>
+              <input id="cPhone" placeholder="(69) 9xxxx-xxxx" />
+            </div>
+            <div>
+              <label>Chave PIX</label>
+              <input id="cPix" placeholder="CPF / e-mail / aleatória" />
+            </div>
+          </div>
+
+          <div class="footer-actions" style="margin-top:12px">
+            <button id="btnAddCourier" class="btn good" type="button">Salvar entregador</button>
+            <button id="btnRemoveCourier" class="btn danger" type="button">Remover pelo código</button>
+          </div>
+
+          <div class="sep"></div>
+
+          <div>
+            <h3 style="margin:0 0 8px;font-size:13px;font-weight:820">Resumo por entregador (dia)</h3>
+            <div id="courierSummary" class="list"></div>
+          </div>
+
+          <div class="sep"></div>
+
+          <!-- FECHAMENTO (mantido) -->
+          <div>
+            <h3 style="margin:0 0 8px;font-size:13px;font-weight:820">Fechamento</h3>
+            <p class="hint" style="margin:0 0 10px">
+              Aqui fica o fechamento do dia (somente o necessário).
+            </p>
+
+            <div class="row">
+              <button id="btnCloseDay" class="btn primary" type="button">Fechar dia (gera texto)</button>
+              <button id="btnCopyClose" class="btn ghost" type="button">Copiar</button>
+            </div>
+
+            <div style="margin-top:10px">
+              <label>Texto do fechamento</label>
+              <textarea id="closeText" readonly placeholder="Clique em “Fechar dia (gera texto)”"></textarea>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </div>
+  </div>
   <script>
-    function copyConfirm(){
-      const el = document.getElementById('wa');
-      const text = el.innerText;
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(()=>{
-          alert('Modelo copiado! É só colar no WhatsApp.');
-        }).catch(fallbackCopy);
-      } else {
-        fallbackCopy();
-      }
-      function fallbackCopy(){
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        alert('Modelo copiado!');
+    const LS_KEY = "docce_entregas_v1";
+    const defaultState = { couriers: [], orders: [] };
+
+    function loadState(){
+      try{
+        const raw = localStorage.getItem(LS_KEY);
+        if(!raw) return structuredClone(defaultState);
+        const parsed = JSON.parse(raw);
+        if(!parsed || typeof parsed !== "object") return structuredClone(defaultState);
+        parsed.couriers = Array.isArray(parsed.couriers) ? parsed.couriers : [];
+        parsed.orders = Array.isArray(parsed.orders) ? parsed.orders : [];
+        return parsed;
+      }catch(e){
+        console.error("Erro ao carregar state:", e);
+        return structuredClone(defaultState);
       }
     }
+
+    function saveState(){
+      localStorage.setItem(LS_KEY, JSON.stringify(state));
+    }
+
+    // ✅ Parse de moeda robusto: aceita "20", "20,00", "20.00", "2.000,50", "2,000.50" etc.
+    function parseMoney(input){
+      if(input == null) return 0;
+      let s = String(input).trim();
+
+      // remove tudo que não seja dígito, vírgula, ponto, sinal
+      s = s.replace(/[^\d.,-]/g, "");
+      if(!s) return 0;
+
+      const hasComma = s.includes(",");
+      const hasDot = s.includes(".");
+
+      if(hasComma && hasDot){
+        // O separador decimal normalmente é o último entre , e .
+        const lastComma = s.lastIndexOf(",");
+        const lastDot = s.lastIndexOf(".");
+        const decSep = lastComma > lastDot ? "," : ".";
+        const thouSep = decSep === "," ? "." : ",";
+        s = s.split(thouSep).join("");  // remove milhares
+        s = s.replace(decSep, ".");     // normaliza decimal
+      }else if(hasComma && !hasDot){
+        // Assume vírgula como decimal (pt-BR)
+        s = s.replace(/\./g, "");
+        s = s.replace(",", ".");
+      }else{
+        // apenas ponto ou nenhum: assume ponto como decimal
+        s = s.replace(/,/g, "");
+      }
+
+      const n = Number(s);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function fmtMoney(n){
+      const lang = navigator.language || "pt-BR";
+      try{
+        return new Intl.NumberFormat(lang, { style:"currency", currency:"BRL" }).format(n || 0);
+      }catch{
+        return "R$ " + (n || 0).toFixed(2).replace(".", ",");
+      }
+    }
+
+    function todayISO(){
+      const d = new Date();
+      const y = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2,"0");
+      const da = String(d.getDate()).padStart(2,"0");
+      return `${y}-${m}-${da}`;
+    }
+
+    function uid(){
+      return Math.random().toString(16).slice(2) + Date.now().toString(16);
+    }
+
+    const $ = (id) => document.getElementById(id);
+
+    let state = loadState();
+
+    // Elements
+    const filterDate = $("filterDate");
+    const oCustomer = $("oCustomer");
+    const oType = $("oType");
+    const oDate = $("oDate");
+    const oTime = $("oTime");
+    const oValue = $("oValue");
+    const oFee = $("oFee");
+    const oCourier = $("oCourier");
+    const oNote = $("oNote");
+
+    const ordersList = $("ordersList");
+    const kpiOrders = $("kpiOrders");
+    const kpiFees = $("kpiFees");
+    const courierSummary = $("courierSummary");
+
+    const cCode = $("cCode");
+    const cName = $("cName");
+    const cPhone = $("cPhone");
+    const cPix = $("cPix");
+
+    const closeText = $("closeText");
+
+    // Init
+    filterDate.value = todayISO();
+    oDate.value = todayISO();
+
+    // Seed courier if none
+    if(state.couriers.length === 0){
+      state.couriers.push({ code:"0001", name:"Entregador 1", phone:"", pix:"" });
+      saveState();
+    }
+
+    function normalizeCode(code){
+      const digits = String(code || "").replace(/\D/g,"").slice(0,4);
+      return digits.padStart(4,"0");
+    }
+
+    function getCourierByCode(code){
+      return state.couriers.find(c => c.code === code) || null;
+    }
+
+    function renderCourierSelect(){
+      const selected = oCourier.value;
+      oCourier.innerHTML = "";
+      const opt0 = document.createElement("option");
+      opt0.value = "";
+      opt0.textContent = "— selecione —";
+      oCourier.appendChild(opt0);
+
+      state.couriers
+        .slice()
+        .sort((a,b)=>a.code.localeCompare(b.code))
+        .forEach(c=>{
+          const opt = document.createElement("option");
+          opt.value = c.code;
+          opt.textContent = `${c.code} • ${c.name}`;
+          oCourier.appendChild(opt);
+        });
+
+      oCourier.value = selected || "";
+    }
+
+    function ordersForDay(dateISO){
+      return state.orders.filter(o => o.date === dateISO);
+    }
+
+    function calcKPIs(dateISO){
+      const list = ordersForDay(dateISO);
+      const totalOrders = list.reduce((acc,o)=>acc + (o.value || 0), 0);
+      const totalFees = list.reduce((acc,o)=>acc + (o.fee || 0), 0);
+      kpiOrders.textContent = fmtMoney(totalOrders);
+      kpiFees.textContent = fmtMoney(totalFees);
+    }
+
+    function renderOrders(){
+      const dateISO = filterDate.value || todayISO();
+      const list = ordersForDay(dateISO)
+        .slice()
+        .sort((a,b)=>{
+          const ta = (a.time || "99:99");
+          const tb = (b.time || "99:99");
+          return ta.localeCompare(tb);
+        });
+
+      ordersList.innerHTML = "";
+      if(list.length === 0){
+        const empty = document.createElement("div");
+        empty.className = "warnbox";
+        empty.textContent = "Nenhuma entrega cadastrada para esta data.";
+        ordersList.appendChild(empty);
+        return;
+      }
+
+      list.forEach(o=>{
+        const courier = getCourierByCode(o.courierCode);
+        const courierName = courier ? courier.name : "—";
+
+        const item = document.createElement("div");
+        item.className = "item";
+
+        const top = document.createElement("div");
+        top.className = "top";
+
+        const left = document.createElement("div");
+        left.className = "left";
+        left.innerHTML = `
+          <div class="title">${(o.customer || "Sem nome")} <span class="tag">${o.type === "retirada" ? "Retirada" : "Entrega"}</span></div>
+          <div class="meta">${o.date} • ${o.time || "--:--"} • ${courierName}</div>
+        `;
+
+        const right = document.createElement("div");
+        right.className = "right";
+        right.innerHTML = `
+          <span class="tag">Pedido: <b>${fmtMoney(o.value || 0)}</b></span>
+          <span class="tag">Taxa: <b>${fmtMoney(o.fee || 0)}</b></span>
+        `;
+
+        top.appendChild(left);
+        top.appendChild(right);
+
+        const details = document.createElement("div");
+        details.className = "details";
+        details.innerHTML = `
+          <div class="details-grid">
+            <div class="field"><div class="k">Cliente</div><div class="v">${o.customer || "—"}</div></div>
+            <div class="field"><div class="k">Tipo</div><div class="v">${o.type || "—"}</div></div>
+            <div class="field"><div class="k">Data / Hora</div><div class="v">${o.date || "—"} ${o.time || ""}</div></div>
+            <div class="field"><div class="k">Entregador</div><div class="v">${courier ? `${courier.code} • ${courier.name}` : "—"}</div></div>
+            <div class="field"><div class="k">Telefone</div><div class="v">${courier?.phone || "—"}</div></div>
+            <div class="field"><div class="k">PIX</div><div class="v">${courier?.pix || "—"}</div></div>
+            <div class="field" style="grid-column:1/-1"><div class="k">Obs.</div><div class="v">${o.note || "—"}</div></div>
+          </div>
+
+          <div class="footer-actions" style="margin-top:10px">
+            <button class="btn danger small" data-del="${o.id}">Excluir</button>
+          </div>
+        `;
+
+        top.addEventListener("click", ()=>{
+          item.classList.toggle("open");
+        });
+
+        item.appendChild(top);
+        item.appendChild(details);
+        ordersList.appendChild(item);
+      });
+
+      // bind delete
+      ordersList.querySelectorAll("[data-del]").forEach(btn=>{
+        btn.addEventListener("click", (ev)=>{
+          ev.stopPropagation();
+          const id = btn.getAttribute("data-del");
+          state.orders = state.orders.filter(o => o.id !== id);
+          saveState();
+          refresh();
+        });
+      });
+    }
+
+    function renderCourierSummary(){
+      const dateISO = filterDate.value || todayISO();
+      const list = ordersForDay(dateISO);
+
+      const map = new Map();
+      for(const o of list){
+        const code = o.courierCode || "----";
+        const prev = map.get(code) || { count:0, fees:0, orders:0 };
+        prev.count += 1;
+        prev.fees += (o.fee || 0);
+        prev.orders += (o.value || 0);
+        map.set(code, prev);
+      }
+
+      courierSummary.innerHTML = "";
+      const codes = Array.from(map.keys()).sort();
+
+      if(codes.length === 0){
+        const empty = document.createElement("div");
+        empty.className = "warnbox";
+        empty.textContent = "Sem entregas para resumir.";
+        courierSummary.appendChild(empty);
+        return;
+      }
+
+      codes.forEach(code=>{
+        const c = getCourierByCode(code);
+        const data = map.get(code);
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `
+          <div class="top" style="cursor:default">
+            <div class="left">
+              <div class="title">${c ? `${c.code} • ${c.name}` : (code === "----" ? "Sem entregador" : code)}</div>
+              <div class="meta">${data.count} entrega(s)</div>
+            </div>
+            <div class="right">
+              <span class="tag">Taxas: <b>${fmtMoney(data.fees)}</b></span>
+            </div>
+          </div>
+        `;
+        courierSummary.appendChild(div);
+      });
+    }
+
+    function refresh(){
+      renderCourierSelect();
+      calcKPIs(filterDate.value);
+      renderOrders();
+      renderCourierSummary();
+    }
+
+    // Actions
+    $("btnClearForm").addEventListener("click", ()=>{
+      oCustomer.value = "";
+      oType.value = "entrega";
+      oDate.value = filterDate.value || todayISO();
+      oTime.value = "";
+      oValue.value = "";
+      oFee.value = "";
+      oCourier.value = "";
+      oNote.value = "";
+      oCustomer.focus();
+    });
+
+    $("btnAddOrder").addEventListener("click", ()=>{
+      const date = (oDate.value || filterDate.value || todayISO()).trim();
+      const time = (oTime.value || "").trim();
+      const customer = oCustomer.value.trim();
+      const type = oType.value;
+      const value = parseMoney(oValue.value);
+      const fee = parseMoney(oFee.value);
+      const courierCode = oCourier.value || "";
+      const note = oNote.value.trim();
+
+      if(!date){
+        alert("Informe a data.");
+        return;
+      }
+      if(!customer){
+        alert("Informe o nome do cliente.");
+        return;
+      }
+      if(type === "entrega" && !courierCode){
+        alert("Selecione o entregador (código).");
+        return;
+      }
+
+      state.orders.push({
+        id: uid(),
+        date,
+        time,
+        customer,
+        type,
+        value,
+        fee,
+        courierCode,
+        note
+      });
+
+      saveState();
+      oCustomer.value = "";
+      oTime.value = "";
+      oValue.value = "";
+      oFee.value = "";
+      oCourier.value = "";
+      oNote.value = "";
+      refresh();
+    });
+
+    $("btnAddCourier").addEventListener("click", ()=>{
+      const code = normalizeCode(cCode.value);
+      const name = cName.value.trim();
+      const phone = cPhone.value.trim();
+      const pix = cPix.value.trim();
+
+      if(!code || code.length !== 4){
+        alert("Código inválido. Use 4 dígitos.");
+        return;
+      }
+      if(!name){
+        alert("Informe o nome do entregador.");
+        return;
+      }
+
+      const idx = state.couriers.findIndex(c=>c.code===code);
+      const payload = { code, name, phone, pix };
+
+      if(idx >= 0){
+        state.couriers[idx] = payload;
+      }else{
+        state.couriers.push(payload);
+      }
+
+      saveState();
+      cCode.value = "";
+      cName.value = "";
+      cPhone.value = "";
+      cPix.value = "";
+      refresh();
+    });
+
+    $("btnRemoveCourier").addEventListener("click", ()=>{
+      const code = normalizeCode(cCode.value);
+      if(!code || code.length !== 4){
+        alert("Informe o código (4 dígitos) no campo Código para remover.");
+        return;
+      }
+
+      // remove entregador e “solta” entregas (mantém pedido, mas sem entregador)
+      state.couriers = state.couriers.filter(c=>c.code !== code);
+      state.orders = state.orders.map(o => o.courierCode === code ? ({...o, courierCode:""}) : o);
+      saveState();
+      refresh();
+    });
+
+    filterDate.addEventListener("change", ()=>{
+      // sincroniza data do formulário com filtro do dia
+      oDate.value = filterDate.value || todayISO();
+      refresh();
+    });
+
+    $("btnCloseDay").addEventListener("click", ()=>{
+      const dateISO = filterDate.value || todayISO();
+      const list = ordersForDay(dateISO);
+
+      const totalOrders = list.reduce((acc,o)=>acc + (o.value || 0), 0);
+      const totalFees = list.reduce((acc,o)=>acc + (o.fee || 0), 0);
+
+      // por entregador
+      const map = new Map();
+      for(const o of list){
+        if(!o.courierCode) continue;
+        const prev = map.get(o.courierCode) || 0;
+        map.set(o.courierCode, prev + (o.fee || 0));
+      }
+
+      const lines = [];
+      lines.push(`FECHAMENTO — ${dateISO}`);
+      lines.push(`Total em pedidos: ${fmtMoney(totalOrders)}`);
+      lines.push(`Total em taxas: ${fmtMoney(totalFees)}`);
+      if(map.size){
+        lines.push(``);
+        lines.push(`Taxas por entregador:`);
+        Array.from(map.entries()).sort((a,b)=>a[0].localeCompare(b[0])).forEach(([code, fees])=>{
+          const c = getCourierByCode(code);
+          lines.push(`- ${code} ${c ? "• "+c.name : ""}: ${fmtMoney(fees)}`);
+        });
+      }
+
+      closeText.value = lines.join("\n");
+    });
+
+    $("btnCopyClose").addEventListener("click", async ()=>{
+      const text = closeText.value || "";
+      if(!text){
+        alert("Nada para copiar ainda. Clique em “Fechar dia (gera texto)”.");
+        return;
+      }
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("Fechamento copiado!");
+      }catch{
+        // fallback
+        closeText.focus();
+        closeText.select();
+        document.execCommand("copy");
+        alert("Fechamento copiado!");
+      }
+    });
+
+    $("btnExport").addEventListener("click", ()=>{
+      const dateISO = filterDate.value || todayISO();
+      const list = ordersForDay(dateISO);
+
+      const header = ["date","time","customer","type","value","fee","courierCode","note"];
+      const rows = [header.join(",")];
+
+      list.forEach(o=>{
+        const row = [
+          o.date || "",
+          o.time || "",
+          (o.customer || "").replaceAll('"','""'),
+          o.type || "",
+          String(o.value || 0),
+          String(o.fee || 0),
+          o.courierCode || "",
+          (o.note || "").replaceAll('"','""'),
+        ].map(v => `"${v}"`);
+        rows.push(row.join(","));
+      });
+
+      const blob = new Blob([rows.join("\n")], { type:"text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `entregas_${dateISO}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    $("btnReset").addEventListener("click", ()=>{
+      const ok = confirm("Isso vai apagar TUDO (entregadores e entregas) neste navegador. Confirmar?");
+      if(!ok) return;
+      state = structuredClone(defaultState);
+      saveState();
+      refresh();
+    });
+
+    // First render
+    refresh();
   </script>
 </body>
 </html>
